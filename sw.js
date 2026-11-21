@@ -1,6 +1,6 @@
 // Service worker: menyimpan halaman pembungkus & ikon supaya aplikasi bisa di-install dan cepat terbuka.
 // Data sertifikat tidak disimpan di sini; selalu diambil langsung dari Apps Script.
-var CACHE = 'elpi-cert-v2';
+var CACHE = 'elpi-cert-v3';
 var SHELL = ['./', 'index.html', 'manifest.webmanifest', 'icons/logo.png', 'icons/favicon.png',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-512.png', 'icons/apple-touch-icon.png'];
 
