@@ -44,7 +44,6 @@
     <span>Certificate Monitor membutuhkan internet untuk mengambil data terbaru dari spreadsheet.</span>
     <button type="button" onclick="location.reload()">Coba lagi</button>
   </div>
-  <iframe id="app" title="ELPI Certificate Monitor" allow="clipboard-write; fullscreen; downloads"></iframe>
 
   <script>
     // ====================================================================================
@@ -52,14 +51,13 @@
     var APP_URL = 'https://script.google.com/macros/s/AKfycbxg3rGuskVGtuqkV_CLZEc2nQ9zJgOJQKFpUSO-JWlmyZE-ELEPWaq4jWeBsccbKcO3QQ/exec';
     // ====================================================================================
 
-    var frame = document.getElementById('app'), splash = document.getElementById('splash'), offline = document.getElementById('offline');
+    var splash = document.getElementById('splash'), offline = document.getElementById('offline');
     function hideSplash() { splash.classList.add('hide'); }
     function start() {
       if (!navigator.onLine) { offline.classList.add('on'); hideSplash(); return; }
       offline.classList.remove('on');
-      frame.addEventListener('load', function () { setTimeout(hideSplash, 400); }, { once: true });
-      frame.src = APP_URL;
-      setTimeout(hideSplash, 12000); // jangan tertahan di layar pembuka bila koneksi lambat
+      // Buka langsung (bukan iframe): iframe gagal bila HP login ke beberapa akun Google.
+      setTimeout(function () { location.replace(APP_URL); }, 500);
     }
     window.addEventListener('offline', function () { offline.classList.add('on'); });
     window.addEventListener('online', function () { if (offline.classList.contains('on')) location.reload(); });
